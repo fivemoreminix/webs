@@ -1,0 +1,22 @@
+input = "pi 3.14159" # bindings are mutable by default
+print input is float # is means "does left match right by pattern"
+                     # is can take a regex string on the right
+tree Token:
+    ID with name
+    Number with value
+
+tokens = []
+for word in split input: # split by UTF-8 whitespace
+    if word is ident: # pattern matching
+        tokens += [Token.ID word as str] # python-like arrays
+    elif word is float:
+        tokens += [Token.Number word as float]
+    else:
+        lex_error "Unidentified token: " + word # automatic error reporting
+
+print debug tokens # "debug" function for pretty-printing values
+# output:
+# [
+#   ID with "pi",
+#   Number with 3.14159
+# ]
